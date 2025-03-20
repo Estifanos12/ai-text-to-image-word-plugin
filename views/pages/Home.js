@@ -24,6 +24,7 @@ const Home = {
           type="text"
           placeholder="Start typing your prompt here..."
           id="prompt"
+          autoComplete="off"
           autofocus
           class="w-[85%] placeholder:text-[#333] dark:placeholder:text-white p-3 focus:outline-0  focus:ring-0 focus:border-0"
         />
@@ -33,6 +34,7 @@ const Home = {
           </svg>
         </button>
       </form>
+      <div id="generated_image"></div>
     </div>
       `;
   },
