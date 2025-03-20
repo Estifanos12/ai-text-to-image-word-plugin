@@ -1,7 +1,7 @@
 (async () => {
   let prompt = "";
   let isDarkMode;
-  let inputDomElement = document.getElementById("prompt");
+  let inputDomElement;
   let formDomElement;
   let submitDomElement;
 
