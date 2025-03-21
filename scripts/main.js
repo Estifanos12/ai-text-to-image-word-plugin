@@ -1,4 +1,4 @@
-(async () => {
+(() => {
   let prompt = "";
   let isDarkMode;
   let inputDomElement;
@@ -18,25 +18,22 @@
       set(target, prop, val) {
         console.log(`${target[prop]} to ${val}`);
         target[prop] = val;
+
+        console.log(formState);
       },
     }
   );
-  // let isSubmitting = false;
-  // let hasError = false;
-  // let errorMessage = "";
-  // let responseMessage = "";
 
-  await router();
-  window.addEventListener("hashchange", router);
-
-  Office.onReady((info) => {
+  Office.onReady(async (info) => {
     if (info.host === Office.HostType.Word) {
+      const router = new Router();
+      await router.initLayout();
+
       isDarkMode = Office.context.officeTheme.isDarkTheme;
       inputDomElement = document.getElementsByTagName("input")[0];
       formDomElement = document.getElementsByTagName("form")[0];
       generatedImageDomElement = document.getElementById("generated_image");
 
-      console.log(generatedImageDomElement);
       submitDomElement = document.querySelector("button[type=submit]");
       submitDomElement.setAttribute("disabled", "disabled");
 
@@ -68,9 +65,12 @@
   function handleFormSubmission(event) {
     event.preventDefault();
 
+    formState.isSubmitting = true;
+
+    return;
     generatedImageDomElement.innerHTML = /*html*/ `
       <div class="w-full p-3 border border-gray-300 rounded-lg my-5">
-        <img src="https://127.0.0.1:3000/assets/logo/logo.png" alt="Generated Image" class="w-full aspect-video"/>      
+        <img src="https://127.0.0.1:3000/assets/logo/logo.png" alt="Generated Image" class="w-full aspect-video"/>
         <p class="text-xs italic py-2 text-center">Click on the generated image to insert.</p>
       </div>
         `;

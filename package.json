@@ -5,6 +5,7 @@
   "main": "./scripts/main.js",
   "type": "module",
   "scripts": {
+    "dev": "http-server -S -C localhost.crt -K localhost.key --cors . -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
