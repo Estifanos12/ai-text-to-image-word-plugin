@@ -20,13 +20,7 @@ const Footer = {
     /**
      * Set inner html of selected node to current year.
      */
-    const updateTime = () => {
-      // Get current year.
-      year.innerHTML = `${new Date().getFullYear()}`;
-    };
-
-    // Set node content and update it every second.
-    updateTime();
-    setInterval(updateTime, 1000);
+    // Get current year.
+    year.innerHTML = `${new Date().getFullYear()}`;
   },
 };
